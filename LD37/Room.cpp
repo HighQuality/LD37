@@ -1,20 +1,29 @@
 #include "stdafx.h"
 #include "Room.h"
 #include "Game.h"
+#include "GameObject.h"
 
 
 Room::Room()
 {
-	mySprite.setTexture(Game::GetInstance().GetTextureFactory().GetTexture("test.png"));
+	myGameObjects.emplace_back(new GameObject("bag.png", sf::Vector2f(0.f, 0.f)));
+	myGameObjects.emplace_back(new GameObject("bag.png", sf::Vector2f(128.f, 300)));
 }
 
 void Room::Update(float aDeltaTime)
 {
+	for (auto && object : myGameObjects)
+	{
+		object->Update(aDeltaTime);
+	}
 }
 
 void Room::Render(sf::RenderTarget& aRenderTarget) const
 {
-	aRenderTarget.draw(mySprite);
+	for (auto && object : myGameObjects)
+	{
+		object->Render(aRenderTarget);
+	}
 }
 
 Room::~Room()

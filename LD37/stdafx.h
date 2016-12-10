@@ -27,4 +27,5 @@
 #include <SFML/Graphics/Texture.hpp>
 
 #include "TextureFactory.h"
+#include "Input.h"
 #include "Game.h"

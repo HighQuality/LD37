@@ -1,5 +1,7 @@
 #pragma once
 
+class GameObject;
+
 class Room
 {
 public:
@@ -10,6 +12,6 @@ public:
 	void Render(sf::RenderTarget & aRenderTarget) const;
 
 private:
-	sf::Sprite mySprite;
+	std::vector<std::unique_ptr<GameObject>> myGameObjects;
 };
 

@@ -6,6 +6,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="TextureFactory.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Input.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -13,5 +15,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Input.cpp" />
   </ItemGroup>
 </Project>

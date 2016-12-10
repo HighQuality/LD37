@@ -10,6 +10,7 @@ Game::Game()
 
 void Game::Intialize()
 {
+	myInput = std::make_unique<Input>();
 	myTextureFactory = std::make_unique<TextureFactory>();
 	myRoom = std::make_unique<Room>();
 }
@@ -44,6 +45,11 @@ TextureFactory& Game::GetTextureFactory() const
 	return *myTextureFactory;
 }
 
+Input& Game::GetInput() const
+{
+	return *myInput;
+}
+
 void Game::GameLoop()
 {
 	sf::Clock clock;
@@ -52,12 +58,7 @@ void Game::GameLoop()
 
 	while (myRenderWindow->isOpen())
 	{
-		sf::Event event;
-		while (myRenderWindow->pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				myRenderWindow->close();
-		}
+		ProcessEvents();
 		
 		Update(deltaTime);
 
@@ -65,9 +66,41 @@ void Game::GameLoop()
 		Render(*myRenderWindow);
 		myRenderWindow->display();
 
+		myInput->Update();
+
 		deltaTime = clock.getElapsedTime().asSeconds();
 		clock.restart();
 	}
+}
+
+void Game::ProcessEvents()
+{
+	sf::Event event;
+	while (myRenderWindow->pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			myRenderWindow->close();
+			break;
+		case sf::Event::KeyPressed:
+			myInput->Press(event.key.code);
+			break;
+		case sf::Event::KeyReleased:
+			myInput->Release(event.key.code);
+			break;
+		case sf::Event::MouseButtonPressed:
+			myInput->Press(event.mouseButton.button);
+			break;
+		case sf::Event::MouseButtonReleased:
+			myInput->Release(event.mouseButton.button);
+			break;
+		default:
+			break;
+		}
+	}
+
+	myInput->SetMousePosition(sf::Mouse::getPosition(*myRenderWindow));
 }
 
 Game::~Game()
