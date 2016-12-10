@@ -4,7 +4,7 @@
 GameObject::GameObject(const std::string& aTexturePath, const sf::Vector2f& aPosition)
 {
 	mySprite.setTexture(Game::GetInstance().GetTextureFactory().GetTexture(aTexturePath));
-	myPosition = aPosition;
+	SetPosition(aPosition);
 }
 
 GameObject::~GameObject()
@@ -13,16 +13,25 @@ GameObject::~GameObject()
 
 void GameObject::Update(const float aDeltaTime)
 {
-	myPosition += myVelocity * aDeltaTime;
+	AddPosition(myVelocity * aDeltaTime);
 }
 
-void GameObject::Render(sf::RenderTarget& aRenderTarget)
+void GameObject::Render(sf::RenderTarget& aRenderTarget) const
 {
-	mySprite.setPosition(myPosition);
 	aRenderTarget.draw(mySprite);
+}
+
+void GameObject::SetPosition(const sf::Vector2f& aPosition)
+{
+	mySprite.setPosition(aPosition);
 }
 
 const sf::Vector2f& GameObject::GetPosition() const
 {
-	return myPosition;
+	return mySprite.getPosition();
+}
+
+void GameObject::AddPosition(const sf::Vector2f& aPosition)
+{
+	SetPosition(GetPosition() + aPosition);
 }

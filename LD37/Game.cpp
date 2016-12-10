@@ -62,7 +62,7 @@ void Game::GameLoop()
 		
 		Update(deltaTime);
 
-		myRenderWindow->clear();
+		myRenderWindow->clear(sf::Color(255, 255, 255));
 		Render(*myRenderWindow);
 		myRenderWindow->display();
 

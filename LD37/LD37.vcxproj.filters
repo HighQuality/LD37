@@ -8,6 +8,9 @@
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Layout.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="VectorMath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -17,5 +20,8 @@
     <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Layout.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="VectorMath.cpp" />
   </ItemGroup>
 </Project>

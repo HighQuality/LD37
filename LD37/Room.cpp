@@ -2,12 +2,15 @@
 #include "Room.h"
 #include "Game.h"
 #include "GameObject.h"
+#include "Layout.h"
+#include "Player.h"
 
 
 Room::Room()
 {
-	myGameObjects.emplace_back(new GameObject("bag.png", sf::Vector2f(0.f, 0.f)));
-	myGameObjects.emplace_back(new GameObject("bag.png", sf::Vector2f(128.f, 300)));
+	myGameObjects.emplace_back(new Player(sf::Vector2f(640.f, 480.f) / 2.f));
+
+	myLayout = std::make_unique<Layout>("level.png");
 }
 
 void Room::Update(float aDeltaTime)
@@ -16,10 +19,14 @@ void Room::Update(float aDeltaTime)
 	{
 		object->Update(aDeltaTime);
 	}
+
+	myLayout->Update(aDeltaTime);
 }
 
 void Room::Render(sf::RenderTarget& aRenderTarget) const
 {
+	myLayout->Render(aRenderTarget);
+
 	for (auto && object : myGameObjects)
 	{
 		object->Render(aRenderTarget);

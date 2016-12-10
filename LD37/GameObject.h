@@ -4,16 +4,17 @@ class GameObject
 {
 public:
 	GameObject(const std::string & aTexturePath, const sf::Vector2f & aPosition);
-	~GameObject();
+	virtual ~GameObject();
 	
-	void Update(const float aDeltaTime);
-	void Render(sf::RenderTarget & aRenderTarget);
+	virtual void Update(const float aDeltaTime);
+	virtual void Render(sf::RenderTarget & aRenderTarget) const;
 
+	void SetPosition(const sf::Vector2f & aPosition);
 	const sf::Vector2f & GetPosition() const;
+	void AddPosition(const sf::Vector2f & aPosition);
 
-private:
+protected:
 	sf::Sprite mySprite;
-	sf::Vector2f myPosition;
 	sf::Vector2f myVelocity;
 };
 
