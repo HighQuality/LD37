@@ -4,10 +4,14 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="TextureFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="TextureFactory.cpp" />
   </ItemGroup>
 </Project>

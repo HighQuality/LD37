@@ -7,6 +7,12 @@
 *.userosscache
 *.sln.docstates
 
+*.ipdb
+*.iobj
+*.obj
+*.pdb
+*.exe
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -18,7 +24,7 @@
 x64/
 x86/
 bld/
-[Bb]in/
+# [Bb]in/
 [Oo]bj/
 [Ll]og/
 

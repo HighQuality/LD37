@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Game.h"
+#include "Room.h"
 
 Game Game::ourInstance;
 
@@ -9,25 +10,38 @@ Game::Game()
 
 void Game::Intialize()
 {
+	myTextureFactory = std::make_unique<TextureFactory>();
+	myRoom = std::make_unique<Room>();
 }
 
 void Game::Update(float aDeltaTime)
 {
+	myRoom->Update(aDeltaTime);
 }
 
-void Game::Render(sf::RenderTarget& aRenderTarget)
+void Game::Render(sf::RenderTarget& aRenderTarget) const
 {
+	myRoom->Render(aRenderTarget);
 }
 
 void Game::Start()
 {
 	myRenderWindow = std::make_unique<sf::RenderWindow>();
-	myRenderWindow->setVisible(false);
-	myRenderWindow->create(sf::VideoMode(640, 480), "Ludum Dare 37", sf::Style::Default);
+	myRenderWindow->create(sf::VideoMode(640, 480), "Ludum Dare 37", sf::Style::Default ^ sf::Style::Resize);
 
 	Intialize();
 
 	GameLoop();
+}
+
+Room& Game::GetRoom() const
+{
+	return *myRoom;
+}
+
+TextureFactory& Game::GetTextureFactory() const
+{
+	return *myTextureFactory;
 }
 
 void Game::GameLoop()
