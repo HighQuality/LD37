@@ -73,21 +73,31 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\SFML-2.4.1\include\;$(IncludePath)</IncludePath>
     <LibraryPath>..\SFML-2.4.1\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>..\Bin\</OutDir>
+    <IntDir>..\Temp\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName) (Debug)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\SFML-2.4.1\include\;$(IncludePath)</IncludePath>
     <LibraryPath>..\SFML-2.4.1\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>..\Bin\</OutDir>
+    <IntDir>..\Temp\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName) (Debug)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\SFML-2.4.1\include\;$(IncludePath)</IncludePath>
     <LibraryPath>..\SFML-2.4.1\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>..\Bin\</OutDir>
+    <IntDir>..\Temp\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\SFML-2.4.1\include\;$(IncludePath)</IncludePath>
     <LibraryPath>..\SFML-2.4.1\lib\;$(LibraryPath)</LibraryPath>
+    <OutDir>..\Bin\</OutDir>
+    <IntDir>..\Temp\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -154,14 +164,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LD37.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -252,3 +252,5 @@ paket-files/
 *.sln.iml
 
 !SFML-2.4.1/**
+!Bin/openal32.dll
+!LD37/LD37.vcxproj.user
